@@ -1,4 +1,4 @@
-# RISO-0.8
+# RISO - 0.9 - Versão do LES CEFET-MG
 Recuperação de Imagem de Sistema Operacional
 
 O RISO (Recuperação de Imagem de Sistema Operacional) é um sistema que recupera imagens em múltiplas máquinas simultaneamente. Para tal ele utiliza a tecnologia de Torrent pra transmitir as imagens de um servidor para os terminais.
