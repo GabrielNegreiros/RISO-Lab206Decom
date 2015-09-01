@@ -4,9 +4,6 @@
 # Arquivo de instalação do riso e do risos
 # --------------------------------------------------------------------------
 
-dep_cli="avahi-utils rtorrent screen ntfsprogs ssh"
-dep_ser="avahi-utils avahi-daemon bittorrent rtorrent screen ntfs-3g grub2 ssh coreutils mkisofs genisoimage findutils bash passwd sed squashfs-tools casper rsync mount eject libdebian-installer4 os-prober ubiquity user-setup discover1  laptop-detect syslinux xterm util-linux xresprobe cdrecord"
-
 # modificaçao -- dessabila o UUID no ubuntu
 DisableUUID(){ 
 b=`cat /boot/grub/grub.cfg | grep =UUID=`
@@ -39,7 +36,11 @@ instala_riso() {
     echo "Instalando Cliente (RISO)..."
     
     echo "Baixando dependências..."
-    apt-get install -y $dep_cli
+    apt-get install -y avahi-utils
+    apt-get install -y rtorrent 
+    apt-get install -y screen
+    apt-get install -y ntfs-3g
+    apt-get install -y ssh
     
     echo "Criando árvore de diretórios..."
     mkdir -p /usr/riso
@@ -75,8 +76,37 @@ instala_risos() {
     mv /etc/shadow.tmp /etc/shadow
     
     echo "Baixando dependências..."
-    apt-get install -y $dep_ser
-    
+    apt-get install -y avahi-utils
+    apt-get install -y avahi-daemon 
+    apt-get install -y bittorrent
+    apt-get install -y rtorrent
+    apt-get install -y screen
+    apt-get install -y ntfs-3g
+    apt-get install -y grub2
+    apt-get install -y ssh
+    apt-get install -y coreutils
+    apt-get install -y mkisofs
+    apt-get install -y genisoimage
+    apt-get install -y findutils
+    apt-get install -y bash
+    apt-get install -y passwd
+    apt-get install -y sed
+    apt-get install -y squashfs-tools
+    apt-get install -y casper
+    apt-get install -y rsync 
+    apt-get install -y mount 
+    apt-get install -y eject 
+    apt-get install -y libdebian-installer4
+    apt-get install -y os-prober
+    apt-get install -y ubiquity
+    apt-get install -y user-setup
+    apt-get install -y laptop-detect
+    apt-get install -y syslinux
+    apt-get install -y xterm 
+    apt-get install -y util-linux
+    apt-get install -y xresporbe
+    apt-get install -y cdrecord   
+   
     echo "Criando árvore de diretórios..."
     mkdir -p /usr/riso
     mkdir -p /usr/riso/imagens
@@ -133,11 +163,11 @@ instala_risos() {
     echo '-->' >> /etc/avahi/services/riso.service
     echo '' >> /etc/avahi/services/riso.service
     echo '<service-group>' >> /etc/avahi/services/riso.service
-    echo '  <name>Servidor RISO_Server </name>' >> /etc/avahi/services/riso.service
+    echo '  <name>Servidor RISO </name>' >> /etc/avahi/services/riso.service
     echo '' >> /etc/avahi/services/riso.service
     echo '  <service>' >> /etc/avahi/services/riso.service
     echo '    <!--Nome do serviço-->' >> /etc/avahi/services/riso.service
-    echo "    <type>_DECOM_RISO._tcp</type>" >> /etc/avahi/services/riso.service
+    echo "    <type>_RISO._tcp</type>" >> /etc/avahi/services/riso.service
     echo '' >> /etc/avahi/services/riso.service
     echo '    <!--Campo não é usado-->' >> /etc/avahi/services/riso.service
     echo '    <port>1234</port>' >> /etc/avahi/services/riso.service
